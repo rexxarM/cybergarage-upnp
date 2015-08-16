@@ -25,7 +25,10 @@ public class NodeList extends Vector
 	
 	public Node getNode(int n)
 	{
-		return (Node)get(n);
+        if (n >= elementCount || n<0){
+            return null;
+        }
+        return (Node)get(n);
 	}
 
 	public Node getNode(String name) 
@@ -36,6 +39,9 @@ public class NodeList extends Vector
 		int nLists = size(); 
 		for (int n=0; n<nLists; n++) {
 			Node node = getNode(n);
+            if(node==null){
+                continue;
+            }
 			String nodeName = node.getName();
 			if (name.compareTo(nodeName) == 0)
 				return node;
@@ -51,6 +57,9 @@ public class NodeList extends Vector
 		int nLists = size(); 
 		for (int n=0; n<nLists; n++) {
 			Node node = getNode(n);
+            if(node==null){
+                continue;
+            }
 			String nodeName = node.getName();
 			if (nodeName == null)
 				continue;

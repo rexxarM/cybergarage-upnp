@@ -61,10 +61,6 @@
 
 package org.cybergarage.upnp;
 
-import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.cybergarage.http.HTTPRequest;
 import org.cybergarage.http.HTTPRequestListener;
 import org.cybergarage.http.HTTPServerList;
@@ -95,6 +91,10 @@ import org.cybergarage.xml.Node;
 import org.cybergarage.xml.NodeList;
 import org.cybergarage.xml.Parser;
 import org.cybergarage.xml.ParserException;
+
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class ControlPoint implements HTTPRequestListener
 {
@@ -292,6 +292,9 @@ public class ControlPoint implements HTTPRequestListener
 		int nRoots = devNodeList.size();
 		for (int n=0; n<nRoots; n++) {
 			Node rootNode = devNodeList.getNode(n);
+			if(rootNode==null){
+				continue;
+			}
 			Device dev = getDevice(rootNode);
 			if (dev == null)
 				continue;
@@ -305,6 +308,9 @@ public class ControlPoint implements HTTPRequestListener
 		int nRoots = devNodeList.size();
 		for (int n=0; n<nRoots; n++) {
 			Node rootNode = devNodeList.getNode(n);
+			if(rootNode==null){
+				continue;
+			}
 			Device dev = getDevice(rootNode);
 			if (dev == null)
 				continue;

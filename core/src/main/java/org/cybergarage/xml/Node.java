@@ -306,7 +306,11 @@ public class Node
 	}
 
 	public Node getNode(int index) {
-		return nodeList.getNode(index);
+		Node res =nodeList.getNode(index);
+		if(res==null){
+			res = new Node();
+		}
+		return res;
 	}
 
 	public Node getNode(String name) 
